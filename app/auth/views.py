@@ -3,6 +3,7 @@ from flask_login import login_user,logout_user,login_required
 from . import auth
 from .forms import LoginForm,RegistrationForm
 from .. import db
+from ..models import User
 from ..email import mail_message
 
 @auth.route('/login',methods=['GET','POST'])
@@ -16,7 +17,9 @@ def login():
 
         flash('Invalid username or Password')
 
-    return render_template('auth/login.html',login_form = login_form)
+    title = "Log In"
+    return render_template('auth/login.html',login_form = login_form,title=title)
+
 
 @auth.route('/register',methods = ["GET","POST"])
 def register():
@@ -26,10 +29,10 @@ def register():
         db.session.add(user)
         db.session.commit()
 
-        mail_message("Welcome to  HOME SPACE","email/welcome_user",user.email,user=user)
+        mail_message("Welcome to Home Space","email/welcome_user",user.email,user=user)
 
         return redirect(url_for('auth.login'))
-      #  title = "New Account"
+        
     return render_template('auth/register.html',registration_form = form)
 
 @auth.route('/logout')
