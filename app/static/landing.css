@@ -10,6 +10,22 @@ body {
 .a nav {
     border-bottom:  5px solid red;
 }
+.top-text{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    width: 30%;
+    margin-bottom: 50%;
+    border: none;
+}
+.art{
+    border: none;
+}
+.top-text h3{
+    font-family: "Montserrat", sans-serif ;
+    border-bottom: 5px solid #ff8c00;
+    margin-bottom: 0px;
+    width: 6em;
+    padding-bottom: 0.2em;
+}
 
 h1,
 h2,

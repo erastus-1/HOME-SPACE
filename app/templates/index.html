@@ -19,7 +19,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  
+
 
   {% if title %}
   <title>House Space Website-{{title}}</title>
@@ -31,7 +31,19 @@
 <body>
   <!-- Content Block -->
   {% block content %}
+    <div class="container">
+      <div class="card art" >
+        <div class="card-body" style="border-bottom: 1px solid rgba(0, 0, 0, 0.5); width: 30%; margin-bottom: 1%; border: none;">
+          <h3 class="card-title" style="border-bottom: 5px solid orange; margin-bottom: 0px; width: 6.1em;padding-bottom: 0.2em;" >Find Property To Rent</h3>
+        </div>
+        <img src="{{url_for('static',filename='House-landing page.jpg')}}" class="card-img-bottom" alt="...">
+      </div>
+    </div>
+   
   {% endblock %}
+
+
+ 
 
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
