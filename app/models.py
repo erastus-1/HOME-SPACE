@@ -2,8 +2,13 @@ from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from datetime import datetime, timedelta
 from time import time
-from flask_login import UserMixin, AnonymousUserMixin
+from flask_login import UserMixin
 from . import login_manager
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 class User( UserMixin, db.Model):
@@ -34,11 +39,3 @@ class User( UserMixin, db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
-class AnonymousUser(AnonymousUserMixin):
-    __tablename__ = 'user'
-
-    def can(self, permissions):
-        return False
-
-    def is_administrator(self):
-        return False
