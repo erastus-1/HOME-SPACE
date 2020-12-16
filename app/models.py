@@ -1,3 +1,5 @@
+
+ 
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from datetime import datetime, timedelta
@@ -168,7 +170,3 @@ class Comment(db.Model):
     def get_comments(cls,houses):
         comments = Comment.query.filter_by(house_id=house).all()
         return comments
-
-
-
-    
