@@ -7,6 +7,15 @@ from flask_login import login_required
 import datetime
 
 
+
+@main.route('/')
+def index():
+
+    title = 'Home-  Welcome to The House Space Website'
+    return render_template('index.html', title = title)
+
+
+
 @main.route('/user/<uname>/update',methods = ['GET','POST'])
 @login_required
 def update_profile(uname):

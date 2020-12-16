@@ -1,14 +1,22 @@
+
+ 
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from datetime import datetime, timedelta
 from time import time
-from flask_login import UserMixin
+from flask_login import UserMixin, AnonymousUserMixin
 from . import login_manager
 
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+userhouse_table = db.Table('userhouse', db.Model.metadata,
+	db.Column('user_id', db.Integer, db.ForeignKey('user.id'),
+			  primary_key=True),
+	db.Column('house_id', db.Integer, db.ForeignKey('house.id'),
+			  primary_key=True)
+	)
 
 class User( UserMixin, db.Model):
     __tablename__ = 'user'
@@ -20,6 +28,7 @@ class User( UserMixin, db.Model):
     language_id = db.Column(db.Integer, db.ForeignKey('language.id'))
     language = db.relationship('Language', back_populates='users')
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'))
+    houses = db.relationship('House', secondary=userhouse_table,back_populates='users', lazy='dynamic')
     timestamp = db.Column(db.DateTime, default=datetime.utcnow, index= True)
     date_entered = db.Column(db.String(32), index = True, unique= True)
     date_out = db.Column(db.DateTime)
@@ -161,7 +170,3 @@ class Comment(db.Model):
     def get_comments(cls,houses):
         comments = Comment.query.filter_by(house_id=house).all()
         return comments
-
-
-
-    
