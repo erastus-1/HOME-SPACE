@@ -34,3 +34,19 @@ def update_profile(uname):
         return redirect(url_for('.profile',uname=user.username))
 
     return render_template('profile/update.html',form = form)
+
+@main.route('/search/<house_type>')
+def search(house_type):
+    '''
+    View function to display the search results
+    '''
+    print(type(house_type)
+    house_type_list = house_type.split(" ")
+    house_type_format = "+".join(house_type_list)
+    searched_houses = search_house(house_type_format)
+
+
+    title = f'search results for {house_type}'
+    
+    return render_template('search.html',houses = searched_houses)
+
