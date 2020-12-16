@@ -17,7 +17,7 @@ userhouse_table = db.Table('userhouse', db.Model.metadata,
 	)
 
 class User( UserMixin, db.Model):
-    __tablename__ = 'users'
+    __tablename__ = 'user'
 
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(64), index=True, unique= True)
@@ -46,7 +46,7 @@ class User( UserMixin, db.Model):
         return f'User {self.username}'
 
 class AnonymousUser(AnonymousUserMixin):
-    __tablename__ = 'users'
+    __tablename__ = 'user'
 
     def can(self, permissions):
         return False
@@ -65,7 +65,7 @@ class AnonymousUser(AnonymousUserMixin):
 #     return User.query.get(int(id))
 
 class Language(db.Model):
-    __tablename__ = 'languages'
+    __tablename__ = 'language'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
     code = db.Column(db.String(5), unique=True)
@@ -92,7 +92,7 @@ class Language(db.Model):
 
 
 class House(db.Model):
-    __tablename__ = 'houses'
+    __tablename__ = 'house'
 
     id = db.Column(db.Integer, primary_key=True)
     year = db.Column(db.String(4), index=True)
@@ -141,13 +141,24 @@ class HouseLanguage(db.Model):
     def get_language_code(self):
         return self.language.code
 
+class Role(db.Model):
+    __tablename__ = 'role'
+
+    id = db.Column(db.Integer,primary_key = True)
+    name = db.Column(db.String(255))
+    users = db.relationship('User',backref = 'role',lazy="dynamic")
+
+
+    def __repr__(self):
+        return f'User {self.name}'
+
 class Comment(db.Model):
     __tablename__ = 'comments'
 
     id = db.Column(db.Integer,primary_key = True)
     comment = db.Column(db.String(1000))
-    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-    house = db.Column(db.Integer,db.ForeignKey("houses.id"))
+    user_id = db.Column(db.Integer,db.ForeignKey("user.id"))
+    house = db.Column(db.Integer,db.ForeignKey("house.id"))
 
     def save_comment(self):
         db.session.add(self)
