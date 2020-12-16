@@ -1,7 +1,5 @@
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
-# from werkzeug.utils import secure_filename
-# from werkzeug.datastructures import  FileStorage
 from datetime import datetime, timedelta
 from time import time
 from flask_login import UserMixin, AnonymousUserMixin
@@ -66,7 +64,7 @@ class AnonymousUser(AnonymousUserMixin):
 # def load_user(id):
 #     return User.query.get(int(id))
 
-class Language(db.Model,languages):
+class Language(db.Model):
     __tablename__ = 'languages'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
@@ -156,7 +154,7 @@ class Comment(db.Model):
         db.session.commit()
 
     @classmethod
-    def get_comments(cls,pitch):
+    def get_comments(cls,houses):
         comments = Comment.query.filter_by(house_id=house).all()
         return comments
 
