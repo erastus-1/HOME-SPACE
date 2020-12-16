@@ -14,6 +14,17 @@ body {
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     width: 20%;
 }
+.c h6 {
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.5); 
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.d{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
 .art{
     border: none;
 }
@@ -99,6 +110,11 @@ a.article-title:hover {
     width: 125px;
     margin-right: 20px;
     margin-bottom: 16px;
+}
+.card-img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .account-heading {
