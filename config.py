@@ -1,13 +1,15 @@
 import os
 
 class Config:
+    '''
+    General configuration parent class
+    '''
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SECRET_KEY = 'SECRET_KEY'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://maranatha:marah@localhost/housespace'
-
-
-    #  email configurations
-    MAIL_SERVER = 'smtp.googlemail.com'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://erastus:Angular2020@localhost/home-space'
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
+    
+    MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
@@ -21,7 +23,7 @@ class Config:
 
 
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://maranatha:marah@localhost/housespace_test'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://erastus:Angular2020@localhost/housespace_test'
 
 
 
@@ -32,16 +34,16 @@ class ProdConfig(Config):
 class DevConfig(Config):
     '''
     Development  configuration child class
-
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://maranatha:marah@localhost/housespace'
-    
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://erastus:Angular@localhost/home-space'
+
     DEBUG = True
-
-
+    ENV = 'development'
+    
 config_options = {
 'development':DevConfig,
-'production':ProdConfig
+'production':ProdConfig,
+'test':TestConfig
 }

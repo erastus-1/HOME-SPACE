@@ -15,7 +15,7 @@ db = SQLAlchemy()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
-# photos = UploadSet('photos', IMAGES)
+photos = UploadSet('photos', IMAGES)
 mail = Mail()
 simple = SimpleMDE()
  
@@ -53,4 +53,14 @@ def create_app(config_name):
 
 	
     
+
+    # Registering the blueprint
+    
+
+    from .auth import auth as auth_blueprint
+    app.register_blueprint(auth_blueprint,url_prefix = '/authenticate')
+
+    # confiure UploadSet
+
+
     return app
