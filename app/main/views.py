@@ -26,13 +26,11 @@ def houses():
 
     page = request.args.get('page', 1, type=int)
     Houses = current_user.houses.order_by(House.timestamp.desc()).paginate(
-        page, current_app.config['POSTS_PER_PAGE'], False)
-
-    return redirect(request.args.get('next') or url_for('main.index'))
-    # next_url = url_for('.house', page=houses.next_num) \
-    # 	if houses.has_next else None
-    # prev_url = url_for('.house', page=houses.prev_num) \
-    # 	if houses.has_prev else None
+    page, current_app.config['POSTS_PER_PAGE'], False)
+    next_url = url_for('.house', page=houses.next_num) \
+    	if houses.has_next else None
+    prev_url = url_for('.house', page=houses.prev_num) \
+    	if houses.has_prev else None
 
     return render_template('houses.html', title='Home', houses=houses.items,
                            next_url=next_url, prev_url=prev_url)
