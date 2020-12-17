@@ -1,0 +1,51 @@
+{% import 'bootstrap/wtf.html' as wtf %}
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+<!-- Styles block -->
+{%block styles%}
+{{ super() }}
+<!-- Bootstrap core CSS -->
+<link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="{{url_for('static', filename='css/clean-blog.min.css')}}" rel="stylesheet">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Ranga" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cormorant+Upright" rel="stylesheet">
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+
+{%endblock%}
+
+<!-- Content block -->
+{%block content%}
+
+
+<!-- Page Header -->
+<header class="masthead">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="page-heading">
+          {{ wtf.quick_form(comment_form) }}
+          <span class="subheading"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Bootstrap core JavaScript -->
+<script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+
+<!-- Custom scripts for this template -->
+<script src="{{url_for('static', filename='js/clean-blog.min.js')}}"></script>
+
+
+</body>
+
+</html>
