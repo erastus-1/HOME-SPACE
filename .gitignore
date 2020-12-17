@@ -1,6 +1,4 @@
 virtual/
 *.pyc
-instance/
 start.sh/
 config.py/
-.env
