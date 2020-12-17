@@ -1,0 +1,8 @@
+{%macro displayComments(comments_list)%}
+    {%for comment in comments_list%}
+        <div class="col-md-12">
+            <h5>{{comment.user.username}}</h5>
+            <p>{{comment.comment}}</p>
+        </div>
+    {%endfor%}
+{%endmacro%}
