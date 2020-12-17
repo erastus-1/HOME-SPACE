@@ -17,55 +17,57 @@ from ..email import mail_message
 @main.route("/")
 def index():
 
-	title = 'Home-  Welcome to The House Space Website'
-	return render_template('index.html', title = title)
+    title = 'Home-  Welcome to The House Space Website'
+    return render_template('index.html', title = title)
 
 
 @main.route("/houses",methods=['GET','POST'])
 def houses():
 
-	page = request.args.get('page', 1, type=int)
-	Houses = current_user.houses.order_by(House.timestamp.desc()).paginate(
-		page, current_app.config['POSTS_PER_PAGE'], False)
-	next_url = url_for('.house', page=houses.next_num) \
-		if houses.has_next else None
-	prev_url = url_for('.house', page=houses.prev_num) \
-		if houses.has_prev else None
+    page = request.args.get('page', 1, type=int)
+    Houses = current_user.houses.order_by(House.timestamp.desc()).paginate(
+        page, current_app.config['POSTS_PER_PAGE'], False)
 
-	return render_template('houses.html', title='Home', houses=houses.items,
-						   next_url=next_url, prev_url=prev_url)
+    return redirect(request.args.get('next') or url_for('main.index'))
+    # next_url = url_for('.house', page=houses.next_num) \
+    # 	if houses.has_next else None
+    # prev_url = url_for('.house', page=houses.prev_num) \
+    # 	if houses.has_prev else None
+
+    return render_template('houses.html', title='Home', houses=houses.items,
+                           next_url=next_url, prev_url=prev_url)
 
 
 
 @main.route('/user/<username>', methods=['GET', 'POST'])
 @login_required
 def user(username):
-	user = User.query.filter_by(username=username).first_or_404()
-	
-	return render_template('user.html', title='User Profile', user=user)
+    user = User.query.filter_by(username=username).first_or_404()
+    
+    return render_template('user.html', title='User Profile', user=user)
 
 
 @main.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
-	if current_app.config['ADMIN_LOCKED']:
-		super_admin = User.query.filter_by(username='admin').first()
-	if current_user == super_admin:
-		flash('Super admin\'s profile is locked')
-		return redirect(url_for('.user', username=current_user.username))
-	form = EditProfileForm(current_user.username)
-	if form.validate_on_submit():
-		current_user.username = form.username.data
-		language = Language.query.get(int(form.language.data))
-		if language:
-			current_user.language = language
-		db.session.commit()
-		flash('Your changes have been saved.')
-		return redirect(url_for('.edit_profile'))
-	elif request.method == 'GET':
-		form.username.data = current_user.username
-		form.language.data = current_user.language_id
-	return render_template('edit_profile.html', title='Edit Profile', form=form)
+    if current_app.config['ADMIN_LOCKED']:
+        super_admin = User.query.filter_by(username='admin').first()
+    if current_user == super_admin:
+        flash('Super admin\'s profile is locked')
+        return redirect(url_for('.user', username=current_user.username))
+    form = EditProfileForm(current_user.username)
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        language = Language.query.get(int(form.language.data))
+        if language:
+            current_user.language = language
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('.edit_profile'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.language.data = current_user.language_id
+    return render_template('edit_profile.html', title='Edit Profile', form=form)
 
 @main.route('/about')
 def about():
