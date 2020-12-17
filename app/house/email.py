@@ -3,7 +3,7 @@ from flask_mail import Message
 from app.email import send_email
 
 
-def send_notice_user_about_car_email(user, about):
+def send_notice_user_about_house_email(user, about):
 	""" 
 	Send user email if a house/home was added/removed to his account.
 	:param user: User model
