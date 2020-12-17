@@ -114,3 +114,21 @@ def update_profile(uname):
         return redirect(url_for('.profile',uname=user.username))
 
     return render_template('profile/update.html',form = form)
+
+
+main.route('/subscribe', methods=['GET','POST'])
+def subscribe():
+    '''
+    Function to send email upon subscription
+    '''
+    if request.method == 'POST':
+        email = request.form['email']
+        new_email = Subscribe(email=email)
+        db.session.add(new_email)
+        db.session.commit()
+
+        mail_message("Thank you for choosing Home Space","email/home_user",user.email,user=user)
+
+        return redirect(url_for('main.index'))
+
+    return render_template('profile/home.html',form = form)     
