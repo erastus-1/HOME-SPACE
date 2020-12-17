@@ -5,7 +5,7 @@ from .. import db
 from .forms import UpdateProfile
 from flask_login import login_required
 import datetime
-
+from ..email import mail_message
 
 
 @main.route('/')
@@ -34,3 +34,21 @@ def update_profile(uname):
         return redirect(url_for('.profile',uname=user.username))
 
     return render_template('profile/update.html',form = form)
+
+
+main.route('/subscribe', methods=['GET','POST'])
+def subscribe():
+    '''
+    Function to send email upon subscription
+    '''
+    if request.method == 'POST':
+        email = request.form['email']
+        new_email = Subscribe(email=email)
+        db.session.add(new_email)
+        db.session.commit()
+
+        mail_message("Thank you for picking us","email/home_user",user.email,user=user)
+
+        return redirect(url_for('main.index'))
+
+    return render_template('profile/home.html',form = form)     
