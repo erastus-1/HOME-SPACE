@@ -1,0 +1,8 @@
+<p>Dear {{ user.username }},</p>
+<p>We would like to notice you that a new house was added to your account.</p>
+<p>
+	You can check your account now by clicking on the link below.<br>
+	{{ url_for('auth.login', _external=True) }}
+</p>
+<p>Sincerely,</p>
+<p>The Houserent Team</p>

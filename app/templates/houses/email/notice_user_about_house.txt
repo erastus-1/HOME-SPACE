@@ -1,0 +1,12 @@
+
+Dear {{ user.username }},
+{% if about == 'add' %}
+We would like to notice you that a new house was added to your account.
+{% else %}
+{% endif %}
+You can check your account now by clicking on the link below.
+{{ url_for('auth.login', _external=True) }} 
+
+Sincerely,
+
+The Houserent Team
