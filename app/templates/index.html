@@ -35,12 +35,16 @@
     />
     <link
       rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static',filename='index.css')}}"
+    />
+    <link
+      rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
     {% if title %}
     <title>House Space Website-{{title}}</title>
     {% else %}
@@ -52,11 +56,12 @@
     <!-- Content Block -->
     {% block content %}
 
-    <div class="container">
-      <form>
-          <input type="text" name="movie_query" placeholder="Search for a Movie" class="form-control">
+    <div class="container">    
+        <!-- <form>
+          <input type="text" name="movie_query" placeholder="Search for a House" class="form-control">
           <input type="submit"  value="Submit" class="btn btn-default">
-      </form>
+      </form> -->
+    </div>
 
     <div class="container">
       <div class="b">
