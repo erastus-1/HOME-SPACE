@@ -22,6 +22,8 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
@@ -67,6 +69,41 @@
           <div class="col"></div>
         </div>
         <br />
+        <!-- Drop-down Button -->
+        
+        <div class="dropdown e">
+          <button class="btn btn-secondary dropdown-toggle rounded-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Nairobi Locations
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Westlands</a>
+            <a class="dropdown-item" href="#">Lang'ata</a>
+            <a class="dropdown-item" href="#">Rong'ai</a>
+            <a class="dropdown-item" href="#">Ng'umba</a>
+          </div>
+          <button class="btn btn-secondary dropdown-toggle rounded-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            No. of Bedrooms
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">1+</a>
+            <a class="dropdown-item" href="#">2+</a>
+            <a class="dropdown-item" href="#">3+</a>
+            <a class="dropdown-item" href="#">4+</a>
+          </div>
+          <button class="btn btn-secondary dropdown-toggle rounded-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Prices
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Ksh 150, 000</a>
+            <a class="dropdown-item" href="#">Ksh 60, 000</a>
+            <a class="dropdown-item" href="#">Ksh 40, 000</a>
+            <a class="dropdown-item" href="#">Ksh 15, 000</a>
+          </div>
+          
+        </div>
+        <br/>
+
+        <!-- Card 1 -->
         <div class="card">
           <div class="row no-gutters">
             <div class="col-md-4">
@@ -103,7 +140,7 @@
         </div>
         <br />
 
-      <!-- Card 2 -->
+        <!-- Card 2 -->
         <div class="card">
           <div class="row no-gutters">
             <div class="col-md-4">
@@ -138,7 +175,7 @@
             </div>
           </div>
         </div>
-        <br>
+        <br />
         <!-- Card 3 -->
         <div class="card">
           <div class="row no-gutters">
@@ -174,7 +211,7 @@
             </div>
           </div>
         </div>
-        <br>
+        <br />
 
         <!-- Card 4 -->
         <div class="card">
@@ -213,10 +250,28 @@
         </div>
 
         <!-- Review -->
-        <br/>
+        <br />
         <div class="">
-          <h2 class="text-center text-bold" style="font-size: 3em; font-weight: 600;">REVIEWS</h2><p class="text-center"><span class="glyphicon glyphicon-star ml-2" style="color: orange; font-size: 30px;"></span>
-            <span class="glyphicon glyphicon-star ml-4" style="color: orange; font-size: 30px;"></span><span class="glyphicon glyphicon-star ml-4" style="color: orange; font-size: 30px;"></span></p>
+          <h2
+            class="text-center text-bold"
+            style="font-size: 3em; font-weight: 600"
+          >
+            REVIEWS
+          </h2>
+          <p class="text-center">
+            <span
+              class="glyphicon glyphicon-star ml-2"
+              style="color: orange; font-size: 30px"
+            ></span>
+            <span
+              class="glyphicon glyphicon-star ml-4"
+              style="color: orange; font-size: 30px"
+            ></span
+            ><span
+              class="glyphicon glyphicon-star ml-4"
+              style="color: orange; font-size: 30px"
+            ></span>
+          </p>
           <img
             src="{{url_for('static',filename='8.jpg')}}"
             class="card-img rounded-circle"
@@ -226,27 +281,33 @@
         </div>
         <div class="card art">
           <div class="row no-gutters">
-            
-            <br/>
+            <br />
             <div class="">
               <div class="card-body ml-5">
                 <strong>
-                
-                <h6 class="lead text-center c" style="line-height:180%; font-weight: 500;"><q>EXQUISITE HOME RE/MAX offers this stunning 1 bedroom house in
-                  the heart
-                  of Nairobi. <br/> Near all private schools and main shopping
-                  centres. The property boasts exquisite <br/>finishes garden and furniture. Furniture included, 
-                  Double garage. 6 Open <br/>
-                  parkings. 8 Parkings altogether. Great Views!</q></h6></strong>
-                  
-                  <p class="lead text-center "> &mdash; Zephon</p>
-                  
+                  <h6
+                    class="lead text-center c"
+                    style="line-height: 180%; font-weight: 500"
+                  >
+                    <q
+                      >EXQUISITE HOME RE/MAX offers this stunning 1 bedroom
+                      house in the heart of Nairobi. <br />
+                      Near all private schools and main shopping centres. The
+                      property boasts exquisite <br />finishes garden and
+                      furniture. Furniture included, Double garage. 6 Open
+                      <br />
+                      parkings. 8 Parkings altogether. Great Views!</q
+                    >
+                  </h6></strong
+                >
+
+                <p class="lead text-center">&mdash; Zephon</p>
               </div>
             </div>
           </div>
         </div>
         <!-- Card 4 -->
-        <br>
+        <br />
         <!-- <div class="card art">
           <div class="col-md-4">
             <img
@@ -301,5 +362,8 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>

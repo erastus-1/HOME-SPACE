@@ -7,33 +7,44 @@ body {
     color: #333333;
     /* margin-top: 5rem; */
 }
+
+
 .a nav {
-    border-bottom:  5px solid red;
+    border-bottom: 5px solid red;
 }
-.b{
+
+.b {
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
     width: 20%;
 }
+
 .c h6 {
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.5); 
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.5);
     margin-left: auto;
     margin-right: auto;
     display: block;
 }
-.d{
+
+.d {
     margin-left: auto;
     margin-right: auto;
     display: block;
 }
-.art{
+.e {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.art {
     border: none;
 }
-.b h3{
-    font-family: "Montserrat", sans-serif ;
+
+.b h3 {
+    font-family: "Montserrat", sans-serif;
     border-bottom: 5px solid #ff8c00;
     margin-bottom: 0px;
     width: 7em;
-
 }
 
 h1,
@@ -111,7 +122,8 @@ a.article-title:hover {
     margin-right: 20px;
     margin-bottom: 16px;
 }
-.card-img{
+
+.card-img {
     margin-left: auto;
     margin-right: auto;
     display: block;
