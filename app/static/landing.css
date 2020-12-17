@@ -8,6 +8,7 @@ body {
     /* margin-top: 5rem; */
 }
 
+
 .a nav {
     border-bottom: 5px solid red;
 }
@@ -25,6 +26,11 @@ body {
 }
 
 .d {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.e {
     margin-left: auto;
     margin-right: auto;
     display: block;
