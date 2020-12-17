@@ -119,6 +119,7 @@ def update_profile(uname):
 
     return render_template('profile/update.html',form = form)
 
+<<<<<<< HEAD
 @main.route('/search/<house_type>')
 def search(house_type):
     '''
@@ -134,3 +135,22 @@ def search(house_type):
 
     return render_template('search.html',houses = searched_houses)
 
+=======
+
+main.route('/subscribe', methods=['GET','POST'])
+def subscribe():
+    '''
+    Function to send email upon subscription
+    '''
+    if request.method == 'POST':
+        email = request.form['email']
+        new_email = Subscribe(email=email)
+        db.session.add(new_email)
+        db.session.commit()
+
+        mail_message("Thank you for choosing Home Space","email/home_user",user.email,user=user)
+
+        return redirect(url_for('main.index'))
+
+    return render_template('profile/home.html',form = form)     
+>>>>>>> 5c2ed41d1ca3fd0697e1b10a514c1fb37f7d71fa

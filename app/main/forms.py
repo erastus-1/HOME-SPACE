@@ -23,4 +23,12 @@ class EditProfileForm(FlaskForm):
 
 class CommentsForm(FlaskForm):
     comment = TextAreaField('Comment', validators=[Required()])
-    submit = SubmitField('SUBMIT')            
+    submit = SubmitField('SUBMIT') 
+
+           
+class FindHome(FlaskForm):
+    email = StringField('Your Email Address',validators=[Required(),Email()])
+    area = StringField('Enter area you will love to live',validators = [Required()])
+    minimum = StringField('Enter minimum amount to pay',validators = [Required()])
+    maximum = StringField('Enter maximum amount to pay',validators = [Required()])
+    submit = SubmitField('Sent')
