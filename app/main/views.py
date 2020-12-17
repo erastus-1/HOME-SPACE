@@ -14,21 +14,25 @@ from ..email import mail_message
     
 
 # @main.route('/index')
-@main.route("/",methods=['GET','POST'])
-
+@main.route("/")
 def index():
 
 	title = 'Home-  Welcome to The House Space Website'
 	return render_template('index.html', title = title)
 
+
+@main.route("/houses",methods=['GET','POST'])
+def houses():
+
 	page = request.args.get('page', 1, type=int)
 	Houses = current_user.houses.order_by(House.timestamp.desc()).paginate(
 		page, current_app.config['POSTS_PER_PAGE'], False)
-	next_url = url_for('.index', page=houses.next_num) \
+	next_url = url_for('.house', page=houses.next_num) \
 		if houses.has_next else None
-	prev_url = url_for('.index', page=houses.prev_num) \
+	prev_url = url_for('.house', page=houses.prev_num) \
 		if houses.has_prev else None
-	return render_template('index.html', title='Home', houses=houses.items,
+
+	return render_template('houses.html', title='Home', houses=houses.items,
 						   next_url=next_url, prev_url=prev_url)
 
 

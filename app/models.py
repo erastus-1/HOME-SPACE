@@ -47,7 +47,7 @@ class User( UserMixin, db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
-class AnonymousUser(AnonymousUserMixin):
+class AnonymousUser(AnonymousUserMixin, db.Model):
     __tablename__ = 'user'
 
     def can(self, permissions):
