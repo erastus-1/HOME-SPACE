@@ -13,7 +13,9 @@ from ..email import mail_message
 
     
 
-@main.route('/index')
+# @main.route('/index')
+@main.route("/",methods=['GET','POST'])
+
 def index():
 
 	title = 'Home-  Welcome to The House Space Website'
@@ -28,6 +30,7 @@ def index():
 		if houses.has_prev else None
 	return render_template('index.html', title='Home', houses=houses.items,
 						   next_url=next_url, prev_url=prev_url)
+
 
 
 @main.route('/user/<username>', methods=['GET', 'POST'])
