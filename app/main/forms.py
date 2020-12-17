@@ -15,7 +15,6 @@ class EditProfileForm(FlaskForm):
         # Populate choices of language.
         self.language.choices = Language.choices()
 
-
     def validate_username(self, username):
         if username.data != self.original_username:
             user = User.query.filter_by(username=self.username.data).first()
